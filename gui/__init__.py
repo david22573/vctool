@@ -7,11 +7,13 @@ import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from ttkbootstrap import utility
 import subprocess
-import threading
 import concurrent.futures
 
 UNCHECKED_BALLOT = '☐'
 CHECKED_BALLOT = '☑'
+DEFAULT_TERM = 'mp4'
+DEFAULT_TYPE = 'endswidth'
+
 
 class FileSearchEngine(ttk.Frame):
 
@@ -25,9 +27,8 @@ class FileSearchEngine(ttk.Frame):
         # application variables
         _path = pathlib.Path().absolute().as_posix()
         self.path_var = ttk.StringVar(value=_path)
-        self.term_var = ttk.StringVar(value='md')
-        self.type_var = ttk.StringVar(value='endswidth')
-        self.check_var = ttk.BooleanVar(value=True)
+        self.term_var = ttk.StringVar(value=DEFAULT_TERM)
+        self.type_var = ttk.StringVar(value=DEFAULT_TYPE)
 
         # header and labelframe option container
         option_text = "Complete the form to begin your search"
